@@ -1,7 +1,7 @@
 "use client";
 
-import { AnimatePresence, motion, useInView, Variants } from "framer-motion";
-import { useRef } from "react";
+import { AnimatePresence, motion, Variants } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 interface BlurFadeProps {
   children: React.ReactNode;
@@ -13,10 +13,11 @@ interface BlurFadeProps {
   duration?: number;
   delay?: number;
   yOffset?: number;
-  inView?: boolean;
+  triggerInView?: boolean;  // renamed to avoid collision
   inViewMargin?: string;
   blur?: string;
 }
+
 const BlurFade = ({
   children,
   className,
@@ -24,18 +25,23 @@ const BlurFade = ({
   duration = 0.4,
   delay = 0,
   yOffset = 6,
-  inView = false,
-  inViewMargin = "-50px",
+  triggerInView = false,              // renamed to avoid collision
+  inViewMargin = "0px 0px -50px 0px",
   blur = "6px",
 }: BlurFadeProps) => {
-  const ref = useRef(null);
-  const inViewResult = useInView(ref, { once: true, margin: inViewMargin });
-  const isInView = !inView || inViewResult;
+  // GET ref and inView from hook directly
+  const { ref, inView } = useInView({
+  rootMargin: inViewMargin, // ✅
+});
+  // Use the inView from the hook and your triggerInView prop
+  const isInView = !triggerInView || inView;
+
   const defaultVariants: Variants = {
     hidden: { y: yOffset, opacity: 0, filter: `blur(${blur})` },
     visible: { y: -yOffset, opacity: 1, filter: `blur(0px)` },
   };
   const combinedVariants = variant || defaultVariants;
+
   return (
     <AnimatePresence>
       <motion.div
