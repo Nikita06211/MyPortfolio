@@ -122,13 +122,13 @@ export const DATA = {
       {
         type: "Website",
         href: "https://dev-tinder-web-pink.vercel.app/login",
-        // icon: Icons.globe, 
+        icon: <Icons.globe/>, 
       },
-      {
-        type: "GitHub",
-        href: "https://github.com/Nikita06211/DevTinder",
-        // icon: Icons.globe, (add icon if you want)
-      },
+      // {
+      //   type: "GitHub",
+      //   href: "https://github.com/Nikita06211/DevTinder",
+      //   icon: <Icons.github/>
+      // },
     ],
     image: "/devtinder.png",
     video: "",
@@ -153,11 +153,13 @@ export const DATA = {
       {
         type: "Website",
         href: "http://docsai-frontend-ssr.pages.dev/",
+         icon: <Icons.globe/>, 
       },
-      {
-        type: "GitHub",
-        href: "https://github.com/Nikita06211/docsai-frontend",
-      },
+      // {
+      //   type: "GitHub",
+      //   href: "https://github.com/Nikita06211/docsai-frontend",
+      //   icon: <Icons.github/>, 
+      // },
     ],
     image: "/docsai.png",
     video: "",
@@ -180,11 +182,13 @@ export const DATA = {
       {
         type: "Website",
         href: "https://admybrand-ai-suite-qjjk.vercel.app/",
+         icon:  <Icons.globe />, 
       },
-      {
-        type: "GitHub",
-        href: "https://github.com/Nikita06211/admybrand-ai-suite",
-      },
+      // {
+      //   type: "GitHub",
+      //   href: "https://github.com/Nikita06211/admybrand-ai-suite",
+      //    icon: <Icons.github/>, 
+      // },
     ],
     image: "/landingpage.png",
     video: "",
